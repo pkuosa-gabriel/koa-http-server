@@ -7,14 +7,14 @@
   "author": "Gabriel Wu <qqbbnease1004@126.com>",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.2.0",
-    "debug": "^4.1.0",
-    "eslint": "^5.7.0",
-    "eslint-config-google": "^0.11.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.4",
-    "nyc": "^13.1.0"
+    "chai": "4.2.0",
+    "chai-http": "4.2.0",
+    "debug": "4.1.0",
+    "eslint": "5.7.0",
+    "eslint-config-google": "0.11.0",
+    "mocha": "5.2.0",
+    "nodemon": "1.18.4",
+    "nyc": "13.1.0"
   },
   "dependencies": {
     "koa": "^2.5.3"
