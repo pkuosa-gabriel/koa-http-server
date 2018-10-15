@@ -20,10 +20,11 @@
     "koa": "^2.5.3"
   },
   "scripts": {
+    "coverage": "nyc report --reporter=json",
     "dev": "nodemon --watch",
     "lint": "eslint *.js test/*.js --fix",
     "start": "node index.js",
-    "test": "nyc report --reporter=json mocha test/*.js"
+    "test": "nyc mocha test/*.js"
   },
   "now": {
     "alias": "koa-http-server",
