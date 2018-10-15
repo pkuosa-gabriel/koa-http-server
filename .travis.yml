@@ -9,6 +9,7 @@ cache:
   - node_modules
 script:
   - yarn test
+  - bash <(curl -s https://codecov.io/bash) -f coverage/coverage.json
 deploy:
   provider: heroku
   api_key:
