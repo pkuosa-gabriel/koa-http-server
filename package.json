@@ -1,6 +1,6 @@
 {
   "name": "koa-http-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple http server based on koa.js",
   "main": "index.js",
   "repository": "git@github.com:pkuosa-gabriel/koa-http-server.git",
