@@ -1,0 +1,27 @@
+{
+  "name": "koa-http-server",
+  "version": "0.0.1",
+  "description": "A simple http server based on koa.js",
+  "main": "index.js",
+  "repository": "git@github.com:pkuosa-gabriel/koa-http-server.git",
+  "author": "Gabriel Wu <qqbbnease1004@126.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "debug": "^4.1.0",
+    "eslint": "^5.7.0",
+    "eslint-config-google": "^0.11.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "nyc": "^13.1.0"
+  },
+  "dependencies": {
+    "koa": "^2.5.3"
+  },
+  "scripts": {
+    "dev": "nodemon --watch",
+    "lint": "eslint *.js test/*.js --fix",
+    "test": "nyc mocha test/*.js"
+  }
+}
