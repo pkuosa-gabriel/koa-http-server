@@ -23,7 +23,7 @@
     "dev": "nodemon --watch",
     "lint": "eslint *.js test/*.js --fix",
     "start": "node index.js",
-    "test": "nyc mocha test/*.js"
+    "test": "nyc report --reporter=json mocha test/*.js"
   },
   "now": {
     "alias": "koa-http-server",
