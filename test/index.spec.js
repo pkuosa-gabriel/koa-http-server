@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 describe('Basic routes', () => {
   after(() => {
     server.close();
-    debug('server has been closed');
+    debug('Server has been closed.');
   });
 
   it('GET /', (done) => {

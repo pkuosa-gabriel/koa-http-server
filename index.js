@@ -2,15 +2,18 @@ const debug = require('debug')('server:index');
 const Koa = require('koa');
 const app = new Koa();
 
+const {route} = require('./router');
+
 app.use(async (ctx) => {
+  debug(`Request for ${ctx.path} received.`); // Output the requested path.
+  route(ctx.path);
   ctx.body = 'Hello World';
-  debug('"Hello World" sent');
 });
 
 const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
-  debug(`server is running on ${port}`);
+  debug(`Server is running on ${port}.`);
 });
 
 module.exports = {
