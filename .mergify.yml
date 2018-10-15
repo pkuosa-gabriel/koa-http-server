@@ -1,0 +1,6 @@
+rules:
+  default:
+    protection:
+      required_status_checks:
+        contexts:
+        - codebeat
