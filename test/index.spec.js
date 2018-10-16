@@ -70,10 +70,21 @@ describe('Basic routes', () => {
   it('should upload a file', (done) => {
     chai.request(server)
       .post('/upload/file')
-      .attach('upload', readFileSync('./test/testUpload.txt'), 'testUpload.txt')
+      .attach('upload', readFileSync('./test/test.txt'), 'test.txt')
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.text).equal('You\'ve uploaded the file: testUpload.txt');
+        expect(res.text).equal('You\'ve uploaded the file: test.txt');
+        done();
+      });
+  });
+
+  it('should reject a big file', (done) => {
+    chai.request(server)
+      .post('/upload/file')
+      .attach('upload', readFileSync('./test/big.jpg'), 'big.jpg')
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.text).equal('The file is too large');
         done();
       });
   });

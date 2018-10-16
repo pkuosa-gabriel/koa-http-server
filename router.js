@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const uuid = require('uuid');
 const router = require('koa-router')();
+
+const FILE_SIZE_LIMIT = 5 * 1024;
 const route = router.use('*', recv)
   .get('home', '/', home)
   .get('about', '/about', about)
@@ -74,7 +76,13 @@ async function uploadFile(ctx) {
   const file = ctx.request.files.upload;
   const reader = fs.createReadStream(file.path);
   const fileName = file.name;
-  debug(`Receive file: ${fileName}`);
+  const fileSize = file.size;
+  if (fileSize > FILE_SIZE_LIMIT) {
+    ctx.status = 406;
+    ctx.body = 'The file is too large';
+    return;
+  }
+  debug(`Receive file: ${fileName}, size: ${fileSize / 1024} kB`);
   const stream = fs.createWriteStream(path.join(
     __dirname, '/public/' + uuid.v4() + fileName.substr(fileName.lastIndexOf('.'))
   ));
