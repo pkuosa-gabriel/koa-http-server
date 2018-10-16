@@ -2,8 +2,8 @@ const debug = require('debug')('server:router');
 const router = require('koa-router')();
 
 const route = router.use('*', recv)
-  .get('/', hello)
-  .get('/home', home);
+  .get('home', '/', home)
+  .get('about', '/about', about);
 
 /**
  * Before routing
@@ -16,19 +16,18 @@ async function recv(ctx, next) {
 }
 
 /**
- * Handle hello world.
- * @param {*} ctx
- */
-async function hello(ctx) {
-  debug(`About to route a request for ${ctx.path}`);
-  ctx.body = 'Hello World';
-}
-
-/**
  * Handle home
  * @param {*} ctx
  */
 async function home(ctx) {
+  ctx.body = 'Hello World';
+}
+
+/**
+ * Handle about
+ * @param {*} ctx
+ */
+async function about(ctx) {
   ctx.body = 'This is a simple http-server powered by koa.js';
 }
 

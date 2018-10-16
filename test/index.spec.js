@@ -12,7 +12,7 @@ describe('Basic routes', () => {
     debug('Server has been closed.');
   });
 
-  it('GET /', (done) => {
+  it('GET HOME', (done) => {
     chai.request(server)
       .get('/')
       .end((err, res) => {
@@ -22,9 +22,9 @@ describe('Basic routes', () => {
       });
   });
 
-  it('GET /HOME', (done) => {
+  it('GET ABOUT', (done) => {
     chai.request(server)
-      .get('/home')
+      .get('/about')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.text).equal('This is a simple http-server powered by koa.js');
