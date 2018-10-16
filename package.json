@@ -30,8 +30,9 @@
     "start": "node index.js",
     "test": "nyc mocha test/*.js"
   },
-  "now": {
-    "alias": "koa-http-server",
-    "name": "koa"
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
   }
 }
