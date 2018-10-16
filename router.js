@@ -73,6 +73,11 @@ async function uploadText(ctx) {
  * @param {*} ctx
  */
 async function uploadFile(ctx) {
+  if (ctx.request.files === undefined) {
+    ctx.status = 406;
+    ctx.body = 'You must upload a file';
+    return;
+  }
   const file = ctx.request.files.upload;
   const reader = fs.createReadStream(file.path);
   const fileName = file.name;

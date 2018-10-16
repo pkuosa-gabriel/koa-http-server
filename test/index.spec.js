@@ -78,6 +78,16 @@ describe('Basic routes', () => {
       });
   });
 
+  it('should reject null upload', (done) => {
+    chai.request(server)
+      .post('/upload/file')
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.text).equal('You must upload a file');
+        done();
+      });
+  });
+
   it('should reject a big file', (done) => {
     chai.request(server)
       .post('/upload/file')

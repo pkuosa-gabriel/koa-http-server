@@ -3,17 +3,58 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>A simple http server powered by koa.js</title>
+    <style>
+      textarea {
+        padding: 5px;
+        border: 2px solid #ccc;
+        -webkit-border-radius: 15px;
+        border-radius: 15px;
+      }
+
+      textarea:focus {
+        border-color: lightblue;
+      }
+
+      input[type=file] {
+        padding: 5px;
+        background: #ccc;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+      }
+
+      input[type=submit] {
+        padding: 5px 15px;
+        background: #99f;
+        border: 0 none;
+        cursor: pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+      }
+
+      input[type=submit]:disabled {
+        background: #ccc;
+      }
+    </style>
   </head>
   <body>
     <h1>Submit a text</h1>
     <form action="/upload/text" method="post">
-      <textarea name="textLayout" rows="20" cols="60"></textarea> </br>
+      <textarea name="textLayout" rows="10" cols="30"></textarea>
       <input type="submit" value="Submit text" />
     </form>
-    <h1>Or upload a file</h1>
-    <form action="/upload/file" enctype="multipart/form-data" method="post">
-      <input type="file" name="upload" multiple="multiple" />
-      <input type="submit" value="Upload file" />
+    <h1>Or upload a file (<5kB)</h1>
+    <form id="fileInput" action="/upload/file" enctype="multipart/form-data" method="post">
+      <input id="upload" type="file" name="upload" />
+      <input id="upload-confirm" type="submit" value="Upload file" disabled />
     </form>
+    <script>
+      const fileInput = document.getElementById('fileInput');
+      const upload = document.getElementById('upload');
+      const uploadBtn = document.getElementById('upload-confirm');
+      fileInput.onchange = function() {
+        const fileSize = upload.files[0].size;
+        uploadBtn.disabled = fileSize > 5 * 1024;
+      }
+    </script>
   </body>
 </html>
