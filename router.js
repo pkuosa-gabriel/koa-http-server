@@ -1,6 +1,5 @@
 const debug = require('debug')('server:router');
 const router = require('koa-router')();
-
 const route = router.use('*', recv)
   .get('home', '/', home)
   .get('about', '/about', about)
@@ -22,7 +21,7 @@ async function recv(ctx, next) {
  * @param {*} ctx
  */
 async function home(ctx) {
-  ctx.body = 'Hello World';
+  await ctx.render('index');
 }
 
 /**

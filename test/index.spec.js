@@ -1,10 +1,11 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const chaiString = require('chai-string');
 const debug = require('debug')('test:index');
 const {server} = require('../index');
 const expect = chai.expect;
 
-chai.use(chaiHttp);
+chai.use(chaiHttp).use(chaiString);
 
 describe('Basic routes', () => {
   after(() => {
@@ -17,7 +18,8 @@ describe('Basic routes', () => {
       .get('/')
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.text).equal('Hello World');
+        expect(res).to.be.html;
+        expect(res.text).to.containIgnoreSpaces('A simple http server powered by koa.js');
         done();
       });
   });

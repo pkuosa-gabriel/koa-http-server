@@ -1,9 +1,20 @@
 const debug = require('debug')('server:index');
+const path = require('path');
 const Koa = require('koa');
 const favicon = require('koa-favicon');
 const logger = require('koa-logger');
-const app = new Koa();
+const render = require('koa-ejs');
 const {route} = require('./router');
+
+const app = new Koa();
+
+render(app, {
+  root: path.join(__dirname, 'view'),
+  viewExt: 'html',
+  layout: false,
+  cache: false,
+  debug: false,
+});
 
 app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.ico'));
