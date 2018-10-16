@@ -1,11 +1,15 @@
 const debug = require('debug')('server:router');
+const fs = require('fs');
+const path = require('path');
+const uuid = require('uuid');
 const router = require('koa-router')();
 const route = router.use('*', recv)
   .get('home', '/', home)
   .get('about', '/about', about)
   .get('github', '/github', github)
   .get('not-found', '*', fallback)
-  .post('upload', '/upload', upload);
+  .post('upload-text', '/upload/text', uploadText)
+  .post('upload-file', '/upload/file', uploadFile);
 
 /**
  * Before routing
@@ -53,13 +57,30 @@ async function fallback(ctx) {
 }
 
 /**
- * Handle upload
+ * Handle text upload
  * @param {*} ctx
  */
-async function upload(ctx) {
-  const text = ctx.request.body.textlayout;
+async function uploadText(ctx) {
+  const text = ctx.request.body.textLayout;
   debug(`Receive text: ${text}`);
   ctx.body = `You've sent the text: ${text}`;
+}
+
+/**
+ * Handle file upload
+ * @param {*} ctx
+ */
+async function uploadFile(ctx) {
+  const file = ctx.request.files.upload;
+  const reader = fs.createReadStream(file.path);
+  const fileName = file.name;
+  debug(`Receive file: ${fileName}`);
+  const stream = fs.createWriteStream(path.join(
+    __dirname, '/public/' + uuid.v4() + fileName.substr(fileName.lastIndexOf('.'))
+  ));
+  reader.pipe(stream);
+  debug('uploading %s -> %s', file.name, stream.path);
+  ctx.body = `You've uploaded the file: ${fileName}`;
 }
 
 module.exports = {

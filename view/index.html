@@ -5,9 +5,15 @@
     <title>A simple http server powered by koa.js</title>
   </head>
   <body>
-    <form action="/upload" method="post">
-      <textarea name="textlayout" rows="20" cols="60"></textarea>
+    <h1>Submit a text</h1>
+    <form action="/upload/text" method="post">
+      <textarea name="textLayout" rows="20" cols="60"></textarea> </br>
       <input type="submit" value="Submit text" />
+    </form>
+    <h1>Or upload a file</h1>
+    <form action="/upload/file" enctype="multipart/form-data" method="post">
+      <input type="file" name="upload" multiple="multiple" />
+      <input type="submit" value="Upload file" />
     </form>
   </body>
 </html>

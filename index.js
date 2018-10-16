@@ -1,10 +1,10 @@
 const debug = require('debug')('server:index');
 const path = require('path');
 const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const favicon = require('koa-favicon');
+const koaBody = require('koa-body');
 const logger = require('koa-logger');
 const render = require('koa-ejs');
+const serve = require('koa-static');
 const {route} = require('./router');
 
 const app = new Koa();
@@ -18,8 +18,8 @@ render(app, {
 });
 
 app.use(logger());
-app.use(bodyParser());
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(koaBody({multipart: true}));
+app.use(serve(path.join(__dirname, '/public')));
 app.use(route.routes());
 
 const port = process.env.PORT || 3000;

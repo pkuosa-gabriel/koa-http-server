@@ -20,13 +20,15 @@
   "dependencies": {
     "debug": "4.1.0",
     "koa": "2.5.3",
-    "koa-bodyparser": "^4.2.1",
+    "koa-body": "4.0.4",
     "koa-ejs": "4.1.2",
-    "koa-favicon": "2.0.1",
     "koa-logger": "3.2.0",
-    "koa-router": "7.4.0"
+    "koa-router": "7.4.0",
+    "koa-static": "5.0.0",
+    "uuid": "3.3.2"
   },
   "scripts": {
+    "clean": "mv public/favicon.ico . && rm -rf public && mkdir public && mv favicon.ico public/",
     "coverage": "nyc report --reporter=json",
     "dev": "nodemon --watch",
     "lint": "eslint *.js test/*.js --fix",

@@ -63,3 +63,7 @@ typings/
 # IDEs
 .vscode
 .idea
+
+# public
+public/*
+!public/favicon.ico

@@ -1,7 +1,8 @@
+const {readFileSync} = require('fs');
+const debug = require('debug')('test:index');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const chaiString = require('chai-string');
-const debug = require('debug')('test:index');
 const {server} = require('../index');
 const expect = chai.expect;
 
@@ -54,14 +55,25 @@ describe('Basic routes', () => {
       });
   });
 
-  it('should post UPLOAD', (done) => {
+  it('should upload a text', (done) => {
     chai.request(server)
-      .post('/upload')
+      .post('/upload/text')
       .set('content-type', 'application/json')
-      .send({'textlayout': 'hello'})
+      .send({'textLayout': 'hello'})
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.text).equal('You\'ve sent the text: hello');
+        done();
+      });
+  });
+
+  it('should upload a file', (done) => {
+    chai.request(server)
+      .post('/upload/file')
+      .attach('upload', readFileSync('./test/testUpload.txt'), 'testUpload.txt')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).equal('You\'ve uploaded the file: testUpload.txt');
         done();
       });
   });
