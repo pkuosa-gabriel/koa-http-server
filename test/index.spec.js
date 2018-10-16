@@ -21,4 +21,14 @@ describe('Basic routes', () => {
         done();
       });
   });
+
+  it('GET /HOME', (done) => {
+    chai.request(server)
+      .get('/home')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).equal('This is a simple http-server powered by koa.js');
+        done();
+      });
+  });
 });
