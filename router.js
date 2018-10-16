@@ -12,7 +12,7 @@ const route = router.use('*', recv)
  */
 async function recv(ctx, next) {
   debug(`Request for ${ctx.path} received.`);
-  await next()
+  await next();
 }
 
 /**
