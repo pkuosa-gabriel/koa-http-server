@@ -53,4 +53,16 @@ describe('Basic routes', () => {
         done();
       });
   });
+
+  it('should post UPLOAD', (done) => {
+    chai.request(server)
+      .post('/upload')
+      .set('content-type', 'application/json')
+      .send({'textlayout': 'hello'})
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).equal('You\'ve sent the text: hello');
+        done();
+      });
+  });
 });

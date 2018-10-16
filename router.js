@@ -4,7 +4,8 @@ const route = router.use('*', recv)
   .get('home', '/', home)
   .get('about', '/about', about)
   .get('github', '/github', github)
-  .get('not found', '*', fallback);
+  .get('not-found', '*', fallback)
+  .post('upload', '/upload', upload);
 
 /**
  * Before routing
@@ -46,8 +47,19 @@ async function github(ctx) {
  * @param {*} ctx
  */
 async function fallback(ctx) {
+  debug(`No route found for ${ctx.path}`);
   ctx.status = 404;
   ctx.body = 'Maybe you have entered a wrong path';
+}
+
+/**
+ * Handle upload
+ * @param {*} ctx
+ */
+async function upload(ctx) {
+  const text = ctx.request.body.textlayout;
+  debug(`Receive text: ${text}`);
+  ctx.body = `You've sent the text: ${text}`;
 }
 
 module.exports = {

@@ -1,6 +1,7 @@
 const debug = require('debug')('server:index');
 const path = require('path');
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
 const favicon = require('koa-favicon');
 const logger = require('koa-logger');
 const render = require('koa-ejs');
@@ -17,6 +18,7 @@ render(app, {
 });
 
 app.use(logger());
+app.use(bodyParser());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(route.routes());
 
