@@ -1,17 +1,13 @@
 const debug = require('debug')('server:index');
 const Koa = require('koa');
 const favicon = require('koa-favicon');
+const logger = require('koa-logger');
 const app = new Koa();
-
 const {route} = require('./router');
 
+app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.ico'));
-
-app.use(async (ctx) => {
-  debug(`Request for ${ctx.path} received.`); // Output the requested path.
-  route(ctx.path);
-  ctx.body = 'Hello World';
-});
+app.use(route.routes());
 
 const port = process.env.PORT || 3000;
 
