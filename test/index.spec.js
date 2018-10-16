@@ -32,6 +32,16 @@ describe('Basic routes', () => {
       });
   });
 
+  it('should redirect /github to GITHUB', (done) => {
+    chai.request(server)
+      .get('/github').redirects(0)
+      .end((err, res) => {
+        expect(res).to.have.status(302);
+        expect(res).to.redirectTo('https://github.com/pkuosa-gabriel/koa-http-server');
+        done();
+      });
+  });
+
   it('should handle NOT FOUND', (done) => {
     chai.request(server)
       .get('/random-route')
