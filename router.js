@@ -3,7 +3,8 @@ const router = require('koa-router')();
 
 const route = router.use('*', recv)
   .get('home', '/', home)
-  .get('about', '/about', about);
+  .get('about', '/about', about)
+  .get('not found', '*', fallback);
 
 /**
  * Before routing
@@ -29,6 +30,15 @@ async function home(ctx) {
  */
 async function about(ctx) {
   ctx.body = 'This is a simple http-server powered by koa.js';
+}
+
+/**
+ * Fallback for routes not found
+ * @param {*} ctx
+ */
+async function fallback(ctx) {
+  ctx.status = 404;
+  ctx.body = 'Maybe you have entered a wrong path';
 }
 
 module.exports = {

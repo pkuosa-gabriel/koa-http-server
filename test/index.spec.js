@@ -12,7 +12,7 @@ describe('Basic routes', () => {
     debug('Server has been closed.');
   });
 
-  it('GET HOME', (done) => {
+  it('should get HOME', (done) => {
     chai.request(server)
       .get('/')
       .end((err, res) => {
@@ -22,12 +22,22 @@ describe('Basic routes', () => {
       });
   });
 
-  it('GET ABOUT', (done) => {
+  it('should get ABOUT', (done) => {
     chai.request(server)
       .get('/about')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.text).equal('This is a simple http-server powered by koa.js');
+        done();
+      });
+  });
+
+  it('should handle NOT FOUND', (done) => {
+    chai.request(server)
+      .get('/random-route')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.text).equal('Maybe you have entered a wrong path');
         done();
       });
   });
