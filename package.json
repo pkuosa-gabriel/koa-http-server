@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "debug": "4.1.0",
-    "koa": "2.5.3",
+    "koa": "2.6.1",
     "koa-body": "4.0.4",
     "koa-ejs": "4.1.2",
     "koa-logger": "3.2.0",
