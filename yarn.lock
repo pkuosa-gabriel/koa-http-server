@@ -939,7 +939,7 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-ejs@^2.5.7:
+ejs@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
   integrity sha512-0xy4A/twfrRCnkhfk8ErDi5DqdAsAqeGxht4xkCUrsvhhbQNs7E+4jV0CN7+NKIY0aHE72+XvqtBIXzD31ZbXQ==
@@ -2033,13 +2033,13 @@ koa-convert@^1.2.0:
     co "^4.6.0"
     koa-compose "^3.0.0"
 
-koa-ejs@4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/koa-ejs/-/koa-ejs-4.1.2.tgz#27c01baa69a24aab34a9f699ef873acd46f7f6ca"
-  integrity sha512-jepsp0L2p8gzskMNsCN659a+fssAoKNBS1y4qvLnikwL6Cq1N7OimeLob7ikTRbCHG7Oom+295lsvzV8T7h2IQ==
+koa-ejs@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/koa-ejs/-/koa-ejs-4.2.0.tgz#375c38759411e828cf54541a908d9768a3ea65f4"
+  integrity sha512-qNcKySHW0gTPSp7++xP/RET2Vuxs36aV76ezp3DmJZNnTOlylXFMv7c62iutZFsiC5ejTS6y9gcj6DmF5WR82g==
   dependencies:
     debug "^2.6.1"
-    ejs "^2.5.7"
+    ejs "^2.6.1"
     mz "^2.6.0"
 
 koa-is-json@^1.0.0:
