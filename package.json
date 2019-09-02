@@ -11,7 +11,7 @@
     "chai-http": "4.3.0",
     "chai-string": "1.5.0",
     "eslint": "6.1.0",
-    "eslint-config-google": "0.13.0",
+    "eslint-config-google": "0.14.0",
     "husky": "3.0.4",
     "mocha": "6.2.0",
     "nodemon": "1.19.1",
